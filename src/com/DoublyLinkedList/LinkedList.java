@@ -4,32 +4,32 @@ package com.DoublyLinkedList;
  * Created by brandon on 7/13/15.
  */
 public class LinkedList {
-    private Node lastNode;
-    private Node firstNode;
+    private static Node lastNode;
+    private static Node firstNode;
 
     public void add(String item) {
         //Takes a string and links it to the next and previous strings.
         Node newNode = new Node();
-        newNode.item = item;
-        if (this.firstNode == null) {
-            this.firstNode = newNode;
+        newNode.setItem(item);
+        if (firstNode == null) {
+            firstNode = newNode;
         }
-        if (this.lastNode != null) {
-            this.lastNode.nextNode = newNode;
-            newNode.prevNode = this.lastNode;
+        if (lastNode != null) {
+            lastNode.setNext(newNode);
+            newNode.setPrev(lastNode);
         }
-        this.lastNode = newNode;
+        lastNode = newNode;
     }
 
     public void remove(Node node) {
         //Removes a node and links its next and previous nodes to each other.
-        if (this.firstNode == node) {
-            this.firstNode = node.nextNode;
-        } else if (this.lastNode == node) {
-            this.lastNode = node.prevNode;
+        if (firstNode == node) {
+            firstNode = node.getNext();
+        } else if (lastNode == node) {
+            lastNode = node.getPrev();
         }
-        node.nextNode.prevNode = node.prevNode;
-        node.prevNode.nextNode = node.nextNode;
+        node.getNext().setPrev(node.getPrev());
+        node.getPrev().setNext(node.getNext());
     }
 
     public void removeAll() {
@@ -37,13 +37,13 @@ public class LinkedList {
     }
 
     public void insertBefore(String inserted, Node before) {
-        //Insert a Node before another Node and rectifies links between the surrounding nodes.
+        //Insert a Node before another Node and rectifies links between the surrounding nodes.nodes
         Node newNode = new Node();
-        newNode.item = inserted;
-        before.prevNode.nextNode = newNode;
-        newNode.nextNode = before;
-        newNode.prevNode = before.prevNode;
-        before.prevNode = newNode;
+        newNode.setItem(inserted);
+        before.getPrev().setNext(newNode);
+        newNode.setNext(before);
+        newNode.setPrev(before.getPrev());
+        before.setPrev(newNode);
         if (before == firstNode) {
             firstNode = newNode;
         }
@@ -52,11 +52,11 @@ public class LinkedList {
     public void insertAfter(String inserted, Node after) {
         //Insert a Node after another Node and rectifies links between the surrounding nodes.
         Node newNode = new Node();
-        newNode.item = inserted;
-        after.nextNode.prevNode = newNode;
-        newNode.nextNode = after.nextNode;
-        newNode.prevNode = after;
-        after.nextNode = newNode;
+        newNode.setItem(inserted);
+        after.getNext().setPrev(newNode);
+        newNode.setNext(after.getNext());
+        newNode.setPrev(after);
+        after.setNext(newNode);
         if (after == lastNode) {
             lastNode = newNode;
         }
@@ -64,7 +64,8 @@ public class LinkedList {
 
     public String[][] toStringArray() {
         //Places linked nodes into an array.
-        return toStringArray();
+        String[][] toStringArray = null; //placeholder
+        return toStringArray;
     }
 
     public void fromStringArray() {

@@ -4,12 +4,16 @@ package com.DoublyLinkedList;
  * Created by brandon on 7/13/15.
  */
 public class LinkedList {
-    public Node lastNode;
+    private Node lastNode;
+    private Node firstNode;
 
     public void add(String item) {
         //Takes a string and links it to the next and previous strings.
         Node newNode = new Node();
         newNode.item = item;
+        if (this.firstNode == null) {
+            this.firstNode = newNode;
+        }
         if (this.lastNode != null) {
             this.lastNode.nextNode = newNode;
             newNode.prevNode = this.lastNode;
@@ -19,6 +23,11 @@ public class LinkedList {
 
     public void remove(Node node) {
         //Removes a node and links its next and previous nodes to each other.
+        if (this.firstNode == node) {
+            this.firstNode = node.nextNode;
+        } else if (this.lastNode == node) {
+            this.lastNode = node.prevNode;
+        }
         node.nextNode.prevNode = node.prevNode;
         node.prevNode.nextNode = node.nextNode;
     }
@@ -35,6 +44,9 @@ public class LinkedList {
         newNode.nextNode = before;
         newNode.prevNode = before.prevNode;
         before.prevNode = newNode;
+        if (before == firstNode) {
+            firstNode = newNode;
+        }
     }
 
     public void insertAfter(String inserted, Node after) {
@@ -45,13 +57,21 @@ public class LinkedList {
         newNode.nextNode = after.nextNode;
         newNode.prevNode = after;
         after.nextNode = newNode;
+        if (after == lastNode) {
+            lastNode = newNode;
+        }
     }
 
-    public void toArray() {
+    public String[][] toStringArray() {
         //Places linked nodes into an array.
+        return toStringArray();
     }
 
-    public void fromArray() {
+    public void fromStringArray() {
         //Takes items from an array and assigns them to linked nodes.
+    }
+
+    public void print() {
+        //
     }
 }

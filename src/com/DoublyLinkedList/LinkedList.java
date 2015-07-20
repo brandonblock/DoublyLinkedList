@@ -1,8 +1,5 @@
 package com.DoublyLinkedList;
 
-/**
- * Created by brandon on 7/13/15.
- */
 public class LinkedList {
     private static Node lastNode;
     private static Node firstNode;
@@ -73,6 +70,6 @@ public class LinkedList {
     }
 
     public void print() {
-        //
+        //Print's the item of each node.
     }
 }

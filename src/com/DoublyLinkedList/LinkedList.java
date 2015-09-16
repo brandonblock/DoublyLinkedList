@@ -31,6 +31,18 @@ public class LinkedList {
 
     public void removeAll() {
         //Removes links between all nodes.
+        Node removeNode = new Node();
+        removeNode = firstNode;
+
+        while (removeNode != lastNode) {
+            Node holdNode = new Node();
+            holdNode = removeNode.getNext();
+            removeNode.setItem(null);
+            removeNode.setNext(null);
+            removeNode.setPrev(null);
+            removeNode = holdNode;
+        }
+
     }
 
     public void insertBefore(String inserted, Node before) {

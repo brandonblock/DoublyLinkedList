@@ -34,7 +34,7 @@ public class LinkedList {
     }
 
     public void insertBefore(String inserted, Node before) {
-        //Insert a Node before another Node and rectifies links between the surrounding nodes.nodes
+        //Insert a Node before another Node and rectifies links between the surrounding nodes.
         Node newNode = new Node();
         newNode.setItem(inserted);
         before.getPrev().setNext(newNode);
@@ -70,6 +70,6 @@ public class LinkedList {
     }
 
     public void print() {
-        //Print's the item of each node.
+        //Prints the item of each node.
     }
 }

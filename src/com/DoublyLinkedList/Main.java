@@ -10,5 +10,7 @@ public class Main {
         linkedlist.add("two");
         linkedlist.add("three");
         linkedlist.add("four");
+
+        linkedlist.print();
     }
 }

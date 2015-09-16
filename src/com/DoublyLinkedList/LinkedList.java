@@ -71,5 +71,12 @@ public class LinkedList {
 
     public void print() {
         //Prints the item of each node.
+        Node printNode = new Node();
+        printNode = firstNode;
+
+        while (printNode != lastNode) {
+            System.out.printf("%s \n", printNode.getItem());
+            printNode = printNode.getNext();
+        }
     }
 }
